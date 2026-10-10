@@ -1,0 +1,439 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Montserrat, sans-serif;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.content {
+    flex: 1;
+}
+
+/* ==== Шапка ==== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 55px;
+    background-color: rgba(122, 144, 190, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 6px;
+}
+
+.header-right {
+    display: flex;
+    gap: 8px;
+}
+
+.toggle {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.toggle input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 26px;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle input:checked + .slider {
+    background: rgb(63, 37, 49);
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+/* ==== Иконки ==== */
+
+.icon {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    color: rgb(122, 144, 190);
+    transform: scale(1.1);
+}
+
+.icon-btn.like:hover {
+    color: rgb(230, 80, 120);
+}
+
+/* ==== Плеер ==== */
+
+.player {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    gap: 24px;
+    padding: 0 20px;
+    background-color: rgba(63, 37, 49, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 6px;
+}
+
+.player-left {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 24px;
+}
+
+.player-controls {
+    display: flex;
+    gap: 24px;
+}
+
+.player-right {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+}
+
+.mini-cover {
+    background-image: url("../images/mini-cover.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.track {
+    font-size: 20px;
+}
+
+.artist {
+    opacity: 0.7;
+    font-size: 16px;
+}
+
+/* ==== Общий блок страницы ==== */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 6px;
+    padding: 20px;
+    background: rgba(12, 12, 12, 0.35);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow-y: auto;
+}
+
+.page-head {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+}
+
+.page-head h1 {
+    font-size: 64px;
+}
+
+.page-head p {
+    flex: 1;
+    font-size: 16px;
+    align-content: flex-end;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+}
+
+.play-big {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(122, 144, 190, 0.5);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.play-big .icon {
+    width: 35px;
+    height: 35px;
+}
+
+.play-big:hover {
+    transform: scale(1.08);
+}
+
+/* ==== Таблица треков ==== */
+
+.tracks-panel {
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+}
+
+.tracks-panel h2,
+.album-panel h2 {
+    font-size: 24px;
+    margin-left: 10px;
+    margin-bottom: 8px;
+}
+
+.tracks {
+    width: 100%;
+    font-size: 16px;
+}
+
+.tracks th {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.tracks .num {
+    width: 24px;
+    text-align: center;
+}
+
+.tracks .track-cell {
+    height: 50px;
+    align-content: center;
+    padding: 0 10px;
+}
+
+.tracks .feat {
+    opacity: 0.7;
+}
+
+.tracks .time,
+.tracks .listen {
+    padding: 0 10px;
+    text-align: right;
+}
+
+/* ==== Альбом ==== */
+
+.album-big-cover {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.album-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+}
+
+/* ==== Артист ==== */
+
+.artist-photo {
+    width: 220px;
+    height: 220px;
+    background-image: url("../images/artist-photo.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.album-panel {
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+}
+
+.albums {
+    display: flex;
+    gap: 24px;
+    margin: 0 -10px;
+}
+
+.album-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 160px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.album-card:hover {
+    background: rgba(159, 159, 159, 0.12);
+}
+
+.album-card h3 {
+    font-size: 16px;
+}
+
+.album-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.cover-1 {
+    background-image: url("../images/album-1.png");
+}
+
+.cover-2 {
+    background-image: url("../images/album-2.png");
+}
+
+.cover-3 {
+    background-image: url("../images/album-3.png");
+}
+
+.cover-4 {
+    background-image: url("../images/album-4.png");
+}
+
+/* ==== Загрузка ==== */
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    color-scheme: dark;
+}
+
+.upload-form .row {
+    display: flex;
+    gap: 60px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+}
+
+.row .fields {
+    flex: 1;
+}
+
+.fields label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+.fields input,
+.fields select {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-family: inherit;
+}
+
+.fields input:focus,
+.fields select:focus {
+    outline: none;
+    border-color: rgb(122, 144, 190);
+}
+
+.btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(122, 144, 190, 0.7);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
