@@ -32,4 +32,6 @@ form.addEventListener("submit", function(event) {
     );
 
     track.printInfo();
+
+    form.reset()
 });
